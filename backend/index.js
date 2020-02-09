@@ -9,6 +9,8 @@ const express = require('express');
 const app = express();
 // Usar o recurso na nossa aplicação
 
+//Rotas, métodos e parâmetros: get, post, put, delete
+
 app.get('/', (request, response) => {
 return response.json({ message: 'Hello Omnistack' });
 
