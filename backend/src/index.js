@@ -12,12 +12,12 @@ const mongoose = require ('mongoose');
 // adicionamos o mongoose para rodar o MongoDB
 
 const routes = require('./routes');
-// Importamos o módulo de rotas
+// Importamos o módulo de rotas com "../" para que a nossa aplicação não procure por um módulo em Node modules
 
 const app = express();
 // Usar o recurso na nossa aplicação
 
-mongoose.connect('mongodb+srv://gu_morilla:Azura23@cluster0-sfpoh.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://gu_morilla:Azura23@cluster0-sfpoh.mongodb.net/Omnistack?retryWrites=true&w=majority',
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -29,6 +29,8 @@ app.use(express.json());
 formato JSON */
 
 app.use(routes);
+// JSON precisa vir antes de usarmos um arquivo ou módulo como acima, JSON não funcionaria pras rotas
+// Node lê tudo de forma linear
 
 //Métodos HTTP: GET, POST, PUT, DELETE
 /* tipos de parâmetros dentro do express:
