@@ -21,11 +21,12 @@ mongoose.connect('mongodb+srv://gu_morilla:Azura23@cluster0-sfpoh.mongodb.net/Om
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex:true,
 })
 // Conectamos com um banco de dados não-relacional (MongoDB)
 
 app.use(express.json());
-/* Precisamos informar a nossa aplicação que será utilizado JSON para entender requisições que tem o corpo no
+/* Precisamos informar a nossa aplicação que será utilizado JSON para entender requisições, que tem o corpo no
 formato JSON */
 
 app.use(routes);
