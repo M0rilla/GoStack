@@ -7,11 +7,15 @@ const axios = require('axios');
 const Dev = require('../models/Dev');
 // Importamos nosso arquivo com o Schema para criarmos nosso Dev
 
+const parseStringAsArray = require('../utils/parseStringAsArray');
+
 module.exports = { 
     
     async index(request, response) {
     const devs = await Dev.find();
-    
+    // trabalhamos com um index por controller, listamos todos os devs e agora iremos criar um novo controller
+    // para fazer uma busca!
+
     return response.json(devs);
     },
 
@@ -41,9 +45,8 @@ module.exports = {
     /* o "name" do usuário não é um valor obrigatório na plataforma, portanto dentro do conceito de
     desestruturação temos como atribuir outro campo no lugar de um que não existe, por padrão */
 
-    const techsArray = techs.split(',').map(tech => tech.trim());
-    // map percorre um array e pra cada informação que tem dentro do vetor ele executa uma função
-    // no caso o trim() que remove espaçamentos antes e depois de uma string
+    const techsArray = parseStringAsArray(techs);
+    
 
     const location = {
         type: 'Point',
@@ -71,4 +74,13 @@ module.exports = {
 /* precisamos ter um unico idioma pra se comunicar entre o front e o back end, escolhemos o JSON
 JSON precisa ser um objeto ou um vetor
 Objeto: varias informações de uma entidade, Array: Lista */
-}}
+},
+
+async update() {
+// update nome, avatar, location e techs (não deixe o github_user ser atualizado)
+},
+
+async destroy(){
+
+}
+}

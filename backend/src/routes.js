@@ -1,7 +1,8 @@
 const { Router } = require('express');
 // quando queremos importar algo específico do express podemos usar chaves
 
-const DevController = require('./controllers/DevController')
+const DevController = require('./controllers/DevController');
+const SearchController = require('./controllers/SearchController');
 
 const axios = require('axios');
 //Intalamos Axios que faz chamadas para outras API's
@@ -14,6 +15,7 @@ const routes = Router();
 
 routes.get('/devs', DevController.index);
 routes.post('/devs', DevController.store);
+routes.get('/search', SearchController.index);
 
 /* Quando acessamos alguma rota da aplicação podemos fazer uma requisição do front end, solicitando informações
  ou podemos usar response para dar uma resposta.
